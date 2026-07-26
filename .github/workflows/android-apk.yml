@@ -11,6 +11,11 @@ jobs:
       - name: Projeyi indir
         uses: actions/checkout@v4
 
+      - name: ZIP dosyasini ac
+        run: |
+          unzip -o Bize-Ozel-APK-Hazir.zip -d apk-projesi
+          ls -la apk-projesi/bize-ozel-main
+
       - name: Node.js kur
         uses: actions/setup-node@v4
         with:
@@ -22,50 +27,24 @@ jobs:
           distribution: temurin
           java-version: "21"
 
-      - name: APK altyapisini kur
-        run: |
-          npm init -y
-          npm install @capacitor/core@8.4.2 @capacitor/cli@8.4.2 @capacitor/android@8.4.2
+      - name: Paketleri kur
+        working-directory: apk-projesi/bize-ozel-main
+        run: npm install
 
-      - name: Uygulama dosyalarini hazirla
-        run: |
-          mkdir -p www/icons
-
-          cp index.html www/index.html
-          cp style.css www/style.css
-          cp app.js www/app.js
-          cp manifest.json www/manifest.json
-          cp sw.js www/sw.js
-
-          cp icon-192.jpeg www/icon-192.jpeg
-          cp icon-512.png www/icon-512.png
-
-          cp icon-192.jpeg www/icons/icon-192.png
-          cp icon-512.png www/icons/icon-512.png
-
-          cat > capacitor.config.json <<'EOF'
-          {
-            "appId": "com.irmakalem.bizeozel",
-            "appName": "Bize Özel",
-            "webDir": "www"
-          }
-          EOF
-
-      - name: Android projesini olustur
-        run: |
-          npx cap add android
-          npx cap sync android
+      - name: Android projesini hazirla
+        working-directory: apk-projesi/bize-ozel-main
+        run: npm run android:prepare
 
       - name: APK olustur
+        working-directory: apk-projesi/bize-ozel-main/android
         run: |
-          cd android
           chmod +x gradlew
           ./gradlew assembleDebug
 
       - name: APK dosyasini hazirla
         run: |
           mkdir -p APK-CIKTISI
-          cp android/app/build/outputs/apk/debug/app-debug.apk APK-CIKTISI/Bize-Ozel.apk
+          cp apk-projesi/bize-ozel-main/android/app/build/outputs/apk/debug/app-debug.apk APK-CIKTISI/Bize-Ozel.apk
 
       - name: APK dosyasini yukle
         uses: actions/upload-artifact@v4
