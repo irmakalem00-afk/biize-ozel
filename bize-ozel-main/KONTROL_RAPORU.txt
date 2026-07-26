@@ -1,0 +1,15 @@
+BİZE ÖZEL — KONTROL RAPORU
+
+- index.html: değiştirilmedi
+- style.css: değiştirilmedi
+- app.js: değiştirilmedi
+- manifest.json: değiştirilmedi
+- sw.js: değiştirilmedi
+- Eksik icons klasörü ve doğru PNG ikonları eklendi.
+- Capacitor Android yapılandırması eklendi.
+- Windows için APK_OLUSTUR.bat eklendi.
+- GitHub Actions ile otomatik APK üretimi eklendi.
+- Kilit ekranı, ana sayfa, yan menü, ruh hali takvimi ve anılar sayfası temel işlev testi yapıldı.
+- Test sırasında JavaScript sayfa hatası görülmedi.
+
+Firebase bu pakete eklenmedi. Mevcut özellikler aynı kalsın diye veriler şimdilik telefonun yerel hafızasında tutulmaya devam eder.

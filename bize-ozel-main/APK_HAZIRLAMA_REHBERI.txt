@@ -1,0 +1,33 @@
+BİZE ÖZEL — APK HAZIRLAMA
+
+Bu pakette uygulamanın tasarımı ve özellikleri değiştirilmedi.
+Android/Capacitor altyapısı ve otomatik APK oluşturma dosyaları eklendi.
+
+EN KOLAY YÖNTEM — GITHUB ÜZERİNDEN
+1. Bu klasördeki bütün dosyaları GitHub deponun ana dalına yükle.
+2. GitHub sayfasında Actions bölümünü aç.
+3. "Android APK Olustur" işlemini aç.
+4. "Run workflow" düğmesine bas.
+5. İşlem bitince sayfanın altındaki "Bize-Ozel-APK" dosyasını indir.
+6. İçinden çıkan Bize-Ozel.apk dosyasını Android telefona kur.
+
+BİLGİSAYARDA APK OLUŞTURMA
+Gerekenler:
+- Node.js 22 veya daha yeni
+- Android Studio ve Android SDK
+- Java 21 (Android Studio ile birlikte gelebilir)
+
+Adımlar:
+1. APK_OLUSTUR.bat dosyasına çift tıkla.
+2. İlk çalıştırmada gerekli paketler internetten indirilir.
+3. İşlem sonunda APK-CIKTISI/Bize-Ozel.apk oluşur.
+
+ANDROID STUDIO İLE AÇMA
+ANDROID_STUDIO_AC.bat dosyasına çift tıkla.
+Android Studio açılınca Build > Build App Bundles or APKs > Build APKs yolunu kullanabilirsin.
+
+NOTLAR
+- Uygulama kimliği: com.irmakalem.bizeozel
+- Uygulama adı: Bize Özel
+- Bu sürümde veriler mevcut sistemde olduğu gibi telefonun yerel hafızasında tutulur.
+- Firebase henüz eklenmedi; sonraki aşamada ayrıca bağlanabilir.

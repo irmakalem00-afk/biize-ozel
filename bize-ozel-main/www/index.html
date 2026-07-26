@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#E85D8A">
+<title>Bize Özel</title>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="pink">
+
+  <!-- ============ KİLİT EKRANI ============ -->
+  <div id="lock-screen">
+    <div class="lock-icon">🔒🔑</div>
+    <h1 class="lock-title">Gizli kodu gir</h1>
+    <p class="lock-hint">İpucu: bizim özel günümüz 💝</p>
+    <div class="dots" id="lock-dots">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+    <p class="lock-msg" id="lock-msg">&nbsp;</p>
+    <div class="numpad" id="numpad">
+      <button class="num-btn" data-num="1">1</button>
+      <button class="num-btn" data-num="2">2</button>
+      <button class="num-btn" data-num="3">3</button>
+      <button class="num-btn" data-num="4">4</button>
+      <button class="num-btn" data-num="5">5</button>
+      <button class="num-btn" data-num="6">6</button>
+      <button class="num-btn" data-num="7">7</button>
+      <button class="num-btn" data-num="8">8</button>
+      <button class="num-btn" data-num="9">9</button>
+      <button class="num-btn empty"></button>
+      <button class="num-btn" data-num="0">0</button>
+      <button class="num-btn" id="backspace-btn">⌫</button>
+    </div>
+  </div>
+
+  <!-- ============ APP ============ -->
+  <div id="app" class="hidden">
+
+    <div class="app-header">
+      <button class="icon-btn" id="menu-open-btn">☰</button>
+      <div class="theme-dots">
+        <button class="theme-dot active" data-t="pink"></button>
+        <button class="theme-dot" data-t="blue"></button>
+        <button class="theme-dot" data-t="green"></button>
+      </div>
+    </div>
+
+    <!-- ---------- ANA SAYFA ---------- -->
+    <section class="page" id="page-home">
+      <div class="mood-bubble" id="mood-bubble-btn">🙂</div>
+      <div class="home-hearts">💕</div>
+      <h1 class="home-greeting">Merhaba Aşkım</h1>
+      <p class="home-sub">Bugün seni düşünüyordum</p>
+
+      <div class="daily-card">
+        <div class="daily-card-label">GÜNÜN KARTI</div>
+        <div class="daily-card-text" id="daily-card-text">"Gülüşün odayı her şeyden daha güzel dolduruyor."</div>
+        <button class="daily-refresh" id="daily-refresh-btn">↻ Başka bir tane göster</button>
+      </div>
+
+      <div class="send-heart-wrap">
+        <button class="heart-btn" id="send-heart-btn">❤️</button>
+        <p class="heart-caption">Özledim demek için dokun</p>
+      </div>
+    </section>
+
+    <!-- ---------- MEKTUP ---------- -->
+    <section class="page hidden" id="page-letter">
+      <h1 class="page-title">💌 Mektup</h1>
+      <p class="page-subtitle">Kalbimden kalbine bir mektup</p>
+      <div class="letter-paper">
+        <textarea class="letter-textarea" id="letter-textarea" placeholder="Sevgili aşkım,
+
+Nereden başlasam bilmiyorum..."></textarea>
+      </div>
+      <button class="letter-save-btn" id="letter-save-btn">Mektubu Kaydet</button>
+      <p class="letter-saved-msg" id="letter-saved-msg">&nbsp;</p>
+    </section>
+
+    <!-- ---------- NOTLAR / KARTLAR ---------- -->
+    <section class="page hidden" id="page-notes">
+      <h1 class="page-title">📝 Seni Sevme Sebeplerim</h1>
+      <p class="page-subtitle">Kaydırarak keşfet</p>
+      <div class="note-card-stage">
+        <div class="note-card">
+          <div class="note-emoji" id="note-emoji">💝</div>
+          <div class="note-text" id="note-text">Her sabah bana iyi günler dilemen.</div>
+        </div>
+        <div class="note-nav">
+          <button class="note-arrow" id="note-prev">←</button>
+          <span class="note-counter" id="note-counter">1 / 8</span>
+          <button class="note-arrow" id="note-next">→</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- QUIZ ---------- -->
+    <section class="page hidden" id="page-quiz">
+      <h1 class="page-title">🎮 Mini Quiz</h1>
+      <p class="page-subtitle">Bizi ne kadar iyi biliyorsun?</p>
+      <div class="quiz-progress" id="quiz-progress"></div>
+      <div id="quiz-body"></div>
+    </section>
+
+    <!-- ---------- ANILAR ---------- -->
+    <section class="page hidden" id="page-memories">
+      <h1 class="page-title">📸 Anılarımız</h1>
+      <p class="page-subtitle">Birlikte biriktirdiklerimiz</p>
+      <div class="memories-grid" id="memories-grid">
+        <button class="add-memory-btn" id="add-memory-btn">+ Yeni anı ekle</button>
+      </div>
+    </section>
+
+    <!-- ---------- SAYAÇ ---------- -->
+    <section class="page hidden" id="page-countdown">
+      <h1 class="page-title">⏳ Sayaç</h1>
+      <div class="countdown-hero">
+        <div class="countdown-date-badge" id="countdown-date-badge">17 Temmuz</div>
+        <p class="page-subtitle" style="margin-bottom:0;">Yıldönümümüze kalan süre</p>
+      </div>
+      <div class="countdown-grid">
+        <div class="countdown-box"><div class="num" id="cd-days">00</div><div class="lbl">GÜN</div></div>
+        <div class="countdown-box"><div class="num" id="cd-hours">00</div><div class="lbl">SAAT</div></div>
+        <div class="countdown-box"><div class="num" id="cd-mins">00</div><div class="lbl">DAKİKA</div></div>
+        <div class="countdown-box"><div class="num" id="cd-secs">00</div><div class="lbl">SANİYE</div></div>
+      </div>
+      <div class="card">
+        <div class="mini-countdown-row"><span class="name">5. Ay dönümüne</span><span class="days">— gün</span></div>
+        <div class="mini-countdown-row"><span class="name">6. Ay dönümüne</span><span class="days">— gün</span></div>
+      </div>
+    </section>
+
+    <!-- ---------- WISHLIST ---------- -->
+    <section class="page hidden" id="page-wishlist">
+      <h1 class="page-title">🛍️ İstek Listem</h1>
+      <p class="page-subtitle">Bir link yapıştır, listeye eklensin</p>
+      <div class="wishlist-search">
+        <input type="text" id="wishlist-input" placeholder="Ürün linki veya adı...">
+        <button id="wishlist-add-btn">+</button>
+      </div>
+      <div id="wishlist-list"></div>
+    </section>
+
+    <!-- ---------- ORTAK LİSTE ---------- -->
+    <section class="page hidden" id="page-sharedlist">
+      <h1 class="page-title">✅ Ortak Listemiz</h1>
+      <p class="page-subtitle">Birlikte yapacaklarımız</p>
+      <div id="sharedlist-list"></div>
+      <div class="add-item-row">
+        <input type="text" id="sharedlist-input" placeholder="Yeni bir şey ekle...">
+        <button id="sharedlist-add-btn">+</button>
+      </div>
+    </section>
+
+    <!-- ---------- SÜRPRİZ ---------- -->
+    <section class="page hidden" id="page-surprise">
+      <div class="surprise-emoji">💖✨</div>
+      <h1 class="page-title" style="text-align:center;">Bunu senin için yaptım</h1>
+      <p class="surprise-text">Her piksel, her kelime, her küçük detay... sevgiyle yapıldı. Dünyadaki her şeyden çok seni seviyorum.</p>
+      <div style="text-align:center;">
+        <button class="replay-btn" id="replay-hearts-btn">Kalpleri Tekrar Oynat 💫</button>
+      </div>
+    </section>
+
+    <!-- ---------- RUH HALİ TAKVİMİ ---------- -->
+    <section class="page hidden" id="page-moodcal">
+      <h1 class="page-title">🙂 Ruh Hali Takvimi</h1>
+      <p class="page-subtitle">Günlerin nasıl geçti?</p>
+      <div class="mood-calendar-grid" id="mood-calendar-grid"></div>
+    </section>
+
+    <!-- ---------- ALT BAR (3 ikon) ---------- -->
+    <nav class="bottom-nav">
+      <button class="nav-btn" data-page="letter">
+        <span class="nav-icon">💌</span>Mektup
+      </button>
+      <button class="nav-btn active" data-page="home">
+        <span class="nav-icon">🏠</span>Ana Sayfa
+      </button>
+      <button class="nav-btn" data-page="notes">
+        <span class="nav-icon">📝</span>Notlar
+      </button>
+    </nav>
+  </div>
+
+  <!-- ============ YAN MENÜ ============ -->
+  <div class="side-menu-overlay hidden" id="side-menu-overlay">
+    <div class="side-menu">
+      <h2 class="side-menu-title">Menü</h2>
+      <button class="menu-item" data-page="home"><span class="menu-icon">🏠</span>Ana Sayfa</button>
+      <button class="menu-item" data-page="letter"><span class="menu-icon">💌</span>Mektup</button>
+      <button class="menu-item" data-page="notes"><span class="menu-icon">📝</span>Notlar</button>
+      <button class="menu-item" data-page="quiz"><span class="menu-icon">🎮</span>Quiz</button>
+      <button class="menu-item" data-page="memories"><span class="menu-icon">📸</span>Anılarımız</button>
+      <button class="menu-item" data-page="countdown"><span class="menu-icon">⏳</span>Sayaç</button>
+      <button class="menu-item" data-page="wishlist"><span class="menu-icon">🛍️</span>İstek Listem</button>
+      <button class="menu-item" data-page="sharedlist"><span class="menu-icon">✅</span>Ortak Listemiz</button>
+      <button class="menu-item" data-page="moodcal"><span class="menu-icon">🙂</span>Ruh Hali Takvimi</button>
+      <button class="menu-item" data-page="surprise"><span class="menu-icon">🎁</span>Sürpriz</button>
+    </div>
+  </div>
+
+  <!-- ============ RUH HALİ SEÇİM SHEET ============ -->
+  <div class="mood-sheet hidden" id="mood-sheet">
+    <div class="mood-sheet-inner">
+      <h2>Bugün nasılsın?</h2>
+      <div class="mood-options">
+        <button class="mood-opt" data-mood="😍">😍</button>
+        <button class="mood-opt" data-mood="🙂">🙂</button>
+        <button class="mood-opt" data-mood="😴">😴</button>
+        <button class="mood-opt" data-mood="😢">😢</button>
+        <button class="mood-opt" data-mood="😡">😡</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
